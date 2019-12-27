@@ -1,0 +1,1593 @@
+//Exercise 5 JOINS
+
+SQL> select * from locations;
+
+LOCATION_ID STREET_ADDRESS                           POSTAL_CODE                
+----------- ---------------------------------------- ------------               
+CITY                           STATE_PROVINCE            CO                     
+------------------------------ ------------------------- --                     
+       1000 1297 Via Cola di Rie                     00989                      
+Roma                                                     IT                     
+                                                                                
+       1100 93091 Calle della Testa                  10934                      
+Venice                                                   IT                     
+                                                                                
+       1200 2017 Shinjuku-ku                         1689                       
+Tokyo                          Tokyo Prefecture          JP                     
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                           POSTAL_CODE                
+----------- ---------------------------------------- ------------               
+CITY                           STATE_PROVINCE            CO                     
+------------------------------ ------------------------- --                     
+       1300 9450 Kamiya-cho                          6823                       
+Hiroshima                                                JP                     
+                                                                                
+       1400 2014 Jabberwocky Rd                      26192                      
+Southlake                      Texas                     US                     
+                                                                                
+       1500 2011 Interiors Blvd                      99236                      
+South San Francisco            California                US                     
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                           POSTAL_CODE                
+----------- ---------------------------------------- ------------               
+CITY                           STATE_PROVINCE            CO                     
+------------------------------ ------------------------- --                     
+       1600 2007 Zagora St                           50090                      
+South Brunswick                New Jersey                US                     
+                                                                                
+       1700 2004 Charade Rd                          98199                      
+Seattle                        Washington                US                     
+                                                                                
+       1800 147 Spadina Ave                          M5V 2L7                    
+Toronto                        Ontario                   CA                     
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                           POSTAL_CODE                
+----------- ---------------------------------------- ------------               
+CITY                           STATE_PROVINCE            CO                     
+------------------------------ ------------------------- --                     
+       1900 6092 Boxwood St                          YSW 9T2                    
+Whitehorse                     Yukon                     CA                     
+                                                                                
+       2000 40-5-12 Laogianggen                      190518                     
+Beijing                                                  CN                     
+                                                                                
+       2100 1298 Vileparle (E)                       490231                     
+Bombay                         Maharashtra               IN                     
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                           POSTAL_CODE                
+----------- ---------------------------------------- ------------               
+CITY                           STATE_PROVINCE            CO                     
+------------------------------ ------------------------- --                     
+       2200 12-98 Victoria Street                    2901                       
+Sydney                         New South Wales           AU                     
+                                                                                
+       2300 198 Clementi North                       540198                     
+Singapore                                                SG                     
+                                                                                
+       2400 8204 Arthur St                                                      
+London                                                   UK                     
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                           POSTAL_CODE                
+----------- ---------------------------------------- ------------               
+CITY                           STATE_PROVINCE            CO                     
+------------------------------ ------------------------- --                     
+       2500 Magdalen Centre, The Oxford Science Park OX9 9ZB                    
+Oxford                         Oxford                    UK                     
+                                                                                
+       2600 9702 Chester Road                        09629850293                
+Stretford                      Manchester                UK                     
+                                                                                
+       2700 Schwanthalerstr. 7031                    80925                      
+Munich                         Bavaria                   DE                     
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                           POSTAL_CODE                
+----------- ---------------------------------------- ------------               
+CITY                           STATE_PROVINCE            CO                     
+------------------------------ ------------------------- --                     
+       2800 Rua Frei Caneca 1360                     01307-002                  
+Sao Paulo                      Sao Paulo                 BR                     
+                                                                                
+       2900 20 Rue des Corps-Saints                  1730                       
+Geneva                         Geneve                    CH                     
+                                                                                
+       3000 Murtenstrasse 921                        3095                       
+Bern                           BE                        CH                     
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                           POSTAL_CODE                
+----------- ---------------------------------------- ------------               
+CITY                           STATE_PROVINCE            CO                     
+------------------------------ ------------------------- --                     
+       3100 Pieter Breughelstraat 837                3029SK                     
+Utrecht                        Utrecht                   NL                     
+                                                                                
+       3200 Mariano Escobedo 9991                    11932                      
+Mexico City                    Distrito Federal,         MX                     
+                                                                                
+
+23 rows selected.
+
+SQL> select * from countries;
+
+CO COUNTRY_NAME                              REGION_ID                          
+-- ---------------------------------------- ----------                          
+AR Argentina                                         2                          
+AU Australia                                         3                          
+BE Belgium                                           1                          
+BR Brazil                                            2                          
+CA Canada                                            2                          
+CH Switzerland                                       1                          
+CN China                                             3                          
+DE Germany                                           1                          
+DK Denmark                                           1                          
+EG Egypt                                             4                          
+FR France                                            1                          
+
+CO COUNTRY_NAME                              REGION_ID                          
+-- ---------------------------------------- ----------                          
+IL Israel                                            4                          
+IN India                                             3                          
+IT Italy                                             1                          
+JP Japan                                             3                          
+KW Kuwait                                            4                          
+ML Malaysia                                          3                          
+MX Mexico                                            2                          
+NG Nigeria                                           4                          
+NL Netherlands                                       1                          
+SG Singapore                                         3                          
+UK United Kingdom                                    1                          
+
+CO COUNTRY_NAME                              REGION_ID                          
+-- ---------------------------------------- ----------                          
+US United States of America                          2                          
+ZM Zambia                                            4                          
+ZW Zimbabwe                                          4                          
+
+
+ SQL> select last_name, e.department_id , department_name
+  2  from employees e inner join departments d on e.department_id =d.department_id;
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Whalen                               10 Administration                          
+Fay                                  20 Marketing                               
+Hartstein                            20 Marketing                               
+Tobias                               30 Purchasing                              
+Colmenares                           30 Purchasing                              
+Baida                                30 Purchasing                              
+Raphaely                             30 Purchasing                              
+Khoo                                 30 Purchasing                              
+Himuro                               30 Purchasing                              
+Mavris                               40 Human Resources                         
+Feeney                               50 Shipping                                
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Fleaur                               50 Shipping                                
+Fripp                                50 Shipping                                
+Gates                                50 Shipping                                
+Gee                                  50 Shipping                                
+Geoni                                50 Shipping                                
+Grant                                50 Shipping                                
+Jones                                50 Shipping                                
+Kaufling                             50 Shipping                                
+Ladwig                               50 Shipping                                
+Everett                              50 Shipping                                
+Dilly                                50 Shipping                                
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Dellinger                            50 Shipping                                
+Davies                               50 Shipping                                
+Chung                                50 Shipping                                
+Cabrio                               50 Shipping                                
+Bull                                 50 Shipping                                
+Bissot                               50 Shipping                                
+Bell                                 50 Shipping                                
+Atkinson                             50 Shipping                                
+Landry                               50 Shipping                                
+Weiss                                50 Shipping                                
+Walsh                                50 Shipping                                
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Vollman                              50 Shipping                                
+Vargas                               50 Shipping                                
+Taylor                               50 Shipping                                
+Mallin                               50 Shipping                                
+Markle                               50 Shipping                                
+Marlow                               50 Shipping                                
+Matos                                50 Shipping                                
+McCain                               50 Shipping                                
+Mikkilineni                          50 Shipping                                
+Mourgos                              50 Shipping                                
+Nayer                                50 Shipping                                
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+OConnell                             50 Shipping                                
+Olson                                50 Shipping                                
+Patel                                50 Shipping                                
+Perkins                              50 Shipping                                
+Philtanker                           50 Shipping                                
+Rajs                                 50 Shipping                                
+Rogers                               50 Shipping                                
+Sarchand                             50 Shipping                                
+Seo                                  50 Shipping                                
+Stiles                               50 Shipping                                
+Sullivan                             50 Shipping                                
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Austin                               60 IT                                      
+Pataballa                            60 IT                                      
+Ernst                                60 IT                                      
+Lorentz                              60 IT                                      
+Hunold                               60 IT                                      
+Baer                                 70 Public Relations                        
+Abel                                 80 Sales                                   
+Ande                                 80 Sales                                   
+Banda                                80 Sales                                   
+Bates                                80 Sales                                   
+Bernstein                            80 Sales                                   
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Bloom                                80 Sales                                   
+Cambrault                            80 Sales                                   
+Cambrault                            80 Sales                                   
+Doran                                80 Sales                                   
+Errazuriz                            80 Sales                                   
+Fox                                  80 Sales                                   
+Greene                               80 Sales                                   
+Hall                                 80 Sales                                   
+Hutton                               80 Sales                                   
+Johnson                              80 Sales                                   
+King                                 80 Sales                                   
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Kumar                                80 Sales                                   
+Lee                                  80 Sales                                   
+Livingston                           80 Sales                                   
+Marvins                              80 Sales                                   
+McEwen                               80 Sales                                   
+Olsen                                80 Sales                                   
+Ozer                                 80 Sales                                   
+Partners                             80 Sales                                   
+Russell                              80 Sales                                   
+Sewall                               80 Sales                                   
+Smith                                80 Sales                                   
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Smith                                80 Sales                                   
+Sully                                80 Sales                                   
+Taylor                               80 Sales                                   
+Tucker                               80 Sales                                   
+Tuvault                              80 Sales                                   
+Vishney                              80 Sales                                   
+Zlotkey                              80 Sales                                   
+Kochhar                              90 Executive                               
+King                                 90 Executive                               
+De Haan                              90 Executive                               
+Popp                                100 Finance                                 
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Urman                               100 Finance                                 
+Chen                                100 Finance                                 
+Faviet                              100 Finance                                 
+Sciarra                             100 Finance                                 
+Greenberg                           100 Finance                                 
+Gietz                               110 Accounting                              
+Higgins                             110 Accounting                              
+
+106 rows selected.
+
+SQL> select * from departments;
+
+DEPARTMENT_ID DEPARTMENT_NAME                MANAGER_ID LOCATION_ID             
+------------- ------------------------------ ---------- -----------             
+           10 Administration                        200        1700             
+           20 Marketing                             201        1800             
+           30 Purchasing                            114        1700             
+           40 Human Resources                       203        2400             
+           50 Shipping                              121        1500             
+           60 IT                                    103        1400             
+           70 Public Relations                      204        2700             
+           80 Sales                                 145        2500             
+           90 Executive                             100        1700             
+          100 Finance                               108        1700             
+          110 Accounting                            205        1700             
+
+DEPARTMENT_ID DEPARTMENT_NAME                MANAGER_ID LOCATION_ID             
+------------- ------------------------------ ---------- -----------             
+          120 Treasury                                         1700             
+          130 Corporate Tax                                    1700             
+          140 Control And Credit                               1700             
+          150 Shareholder Services                             1700             
+          160 Benefits                                         1700             
+          170 Manufacturing                                    1700             
+          180 Construction                                     1700             
+          190 Contracting                                      1700             
+          200 Operations                                       1700             
+          210 IT Support                                       1700             
+          220 NOC                                              1700             
+
+DEPARTMENT_ID DEPARTMENT_NAME                MANAGER_ID LOCATION_ID             
+------------- ------------------------------ ---------- -----------             
+          230 IT Helpdesk                                      1700             
+          240 Government Sales                                 1700             
+          250 Retail Sales                                     1700             
+          260 Recruiting                                       1700             
+          270 Payroll                                          1700             
+
+27 rows selected.
+
+SQL> 
+SQL> desc locations;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ LOCATION_ID                               NOT NULL NUMBER(4)
+ STREET_ADDRESS                                     VARCHAR2(40)
+ POSTAL_CODE                                        VARCHAR2(12)
+ CITY                                      NOT NULL VARCHAR2(30)
+ STATE_PROVINCE                                     VARCHAR2(25)
+ COUNTRY_ID                                         CHAR(2)
+
+SQL> desc countries;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COUNTRY_ID                                NOT NULL CHAR(2)
+ COUNTRY_NAME                                       VARCHAR2(40)
+ REGION_ID                                          NUMBER
+
+SQL> select l.location_id, l.street_address, l.city, l.state_province,c.country_name
+  2  from locations l join countries c
+  3  on c.country_id = l.country_id;
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+       1000 1297 Via Cola di Rie                                                
+Roma                                                                            
+Italy                                                                           
+                                                                                
+       1100 93091 Calle della Testa                                             
+Venice                                                                          
+Italy                                                                           
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+                                                                                
+       1200 2017 Shinjuku-ku                                                    
+Tokyo                          Tokyo Prefecture                                 
+Japan                                                                           
+                                                                                
+       1300 9450 Kamiya-cho                                                     
+Hiroshima                                                                       
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+Japan                                                                           
+                                                                                
+       1400 2014 Jabberwocky Rd                                                 
+Southlake                      Texas                                            
+United States of America                                                        
+                                                                                
+       1500 2011 Interiors Blvd                                                 
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+South San Francisco            California                                       
+United States of America                                                        
+                                                                                
+       1600 2007 Zagora St                                                      
+South Brunswick                New Jersey                                       
+United States of America                                                        
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+       1700 2004 Charade Rd                                                     
+Seattle                        Washington                                       
+United States of America                                                        
+                                                                                
+       1800 147 Spadina Ave                                                     
+Toronto                        Ontario                                          
+Canada                                                                          
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+                                                                                
+       1900 6092 Boxwood St                                                     
+Whitehorse                     Yukon                                            
+Canada                                                                          
+                                                                                
+       2000 40-5-12 Laogianggen                                                 
+Beijing                                                                         
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+China                                                                           
+                                                                                
+       2100 1298 Vileparle (E)                                                  
+Bombay                         Maharashtra                                      
+India                                                                           
+                                                                                
+       2200 12-98 Victoria Street                                               
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+Sydney                         New South Wales                                  
+Australia                                                                       
+                                                                                
+       2300 198 Clementi North                                                  
+Singapore                                                                       
+Singapore                                                                       
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+       2400 8204 Arthur St                                                      
+London                                                                          
+United Kingdom                                                                  
+                                                                                
+       2500 Magdalen Centre, The Oxford Science Park                            
+Oxford                         Oxford                                           
+United Kingdom                                                                  
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+                                                                                
+       2600 9702 Chester Road                                                   
+Stretford                      Manchester                                       
+United Kingdom                                                                  
+                                                                                
+       2700 Schwanthalerstr. 7031                                               
+Munich                         Bavaria                                          
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+Germany                                                                         
+                                                                                
+       2800 Rua Frei Caneca 1360                                                
+Sao Paulo                      Sao Paulo                                        
+Brazil                                                                          
+                                                                                
+       2900 20 Rue des Corps-Saints                                             
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+Geneva                         Geneve                                           
+Switzerland                                                                     
+                                                                                
+       3000 Murtenstrasse 921                                                   
+Bern                           BE                                               
+Switzerland                                                                     
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+       3100 Pieter Breughelstraat 837                                           
+Utrecht                        Utrecht                                          
+Netherlands                                                                     
+                                                                                
+       3200 Mariano Escobedo 9991                                               
+Mexico City                    Distrito Federal,                                
+Mexico                                                                          
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+                                                                                
+
+23 rows selected.
+
+
+  1  select e.last_name,job_id, e.department_id , d.department_name
+  2  from employees e join departments d 
+  3  on e.department_id =d.department_id
+  4  join locations l on d.location_id=l.location_id
+  5* where lower(l.city)='toronto'
+SQL> /
+
+LAST_NAME                 JOB_ID     DEPARTMENT_ID                              
+------------------------- ---------- -------------                              
+DEPARTMENT_NAME                                                                 
+------------------------------                                                  
+Hartstein                 MK_MAN                20                              
+Marketing                                                                       
+                                                                                
+Fay                       MK_REP                20                              
+Marketing                                                                       
+                                                                                
+
+SQL> select l.location_id, l.street_address, l.city,l.state_province,c.country_name
+  2  from locations l natural join countries c
+  3  on c.country_id = l.country_id;
+on c.country_id = l.country_id
+*
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select l.location_id, l.street_address, l.city,l.state_province,c.country_name
+  2  from locations l join countries c
+  3* on c.country_id = l.country_id
+SQL> /
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+       1000 1297 Via Cola di Rie                                                
+Roma                                                                            
+Italy                                                                           
+                                                                                
+       1100 93091 Calle della Testa                                             
+Venice                                                                          
+Italy                                                                           
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+                                                                                
+       1200 2017 Shinjuku-ku                                                    
+Tokyo                          Tokyo Prefecture                                 
+Japan                                                                           
+                                                                                
+       1300 9450 Kamiya-cho                                                     
+Hiroshima                                                                       
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+Japan                                                                           
+                                                                                
+       1400 2014 Jabberwocky Rd                                                 
+Southlake                      Texas                                            
+United States of America                                                        
+                                                                                
+       1500 2011 Interiors Blvd                                                 
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+South San Francisco            California                                       
+United States of America                                                        
+                                                                                
+       1600 2007 Zagora St                                                      
+South Brunswick                New Jersey                                       
+United States of America                                                        
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+       1700 2004 Charade Rd                                                     
+Seattle                        Washington                                       
+United States of America                                                        
+                                                                                
+       1800 147 Spadina Ave                                                     
+Toronto                        Ontario                                          
+Canada                                                                          
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+                                                                                
+       1900 6092 Boxwood St                                                     
+Whitehorse                     Yukon                                            
+Canada                                                                          
+                                                                                
+       2000 40-5-12 Laogianggen                                                 
+Beijing                                                                         
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+China                                                                           
+                                                                                
+       2100 1298 Vileparle (E)                                                  
+Bombay                         Maharashtra                                      
+India                                                                           
+                                                                                
+       2200 12-98 Victoria Street                                               
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+Sydney                         New South Wales                                  
+Australia                                                                       
+                                                                                
+       2300 198 Clementi North                                                  
+Singapore                                                                       
+Singapore                                                                       
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+       2400 8204 Arthur St                                                      
+London                                                                          
+United Kingdom                                                                  
+                                                                                
+       2500 Magdalen Centre, The Oxford Science Park                            
+Oxford                         Oxford                                           
+United Kingdom                                                                  
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+                                                                                
+       2600 9702 Chester Road                                                   
+Stretford                      Manchester                                       
+United Kingdom                                                                  
+                                                                                
+       2700 Schwanthalerstr. 7031                                               
+Munich                         Bavaria                                          
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+Germany                                                                         
+                                                                                
+       2800 Rua Frei Caneca 1360                                                
+Sao Paulo                      Sao Paulo                                        
+Brazil                                                                          
+                                                                                
+       2900 20 Rue des Corps-Saints                                             
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+Geneva                         Geneve                                           
+Switzerland                                                                     
+                                                                                
+       3000 Murtenstrasse 921                                                   
+Bern                           BE                                               
+Switzerland                                                                     
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+       3100 Pieter Breughelstraat 837                                           
+Utrecht                        Utrecht                                          
+Netherlands                                                                     
+                                                                                
+       3200 Mariano Escobedo 9991                                               
+Mexico City                    Distrito Federal,                                
+Mexico                                                                          
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+                                                                                
+
+23 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select l.location_id, l.street_address, l.city,l.state_province,c.country_name
+  2  from locations l naturaljoin countries c
+  3* on c.country_id = l.country_id
+SQL> select l.location_id, l.street_address, l.city,l.state_province,c.country_name
+  2  from locations l natural join countries c
+  3  using (country_id);/
+  4  
+SQL> select l.location_id, l.street_address, l.city,l.state_province,c.country_name
+  2  from locations l natural join countries c
+  3  using (country_id);
+using (country_id)
+*
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select l.location_id, l.street_address, l.city,l.state_province,c.country_name
+  2* from locations l natural join countries c
+  3  /
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+       1000 1297 Via Cola di Rie                                                
+Roma                                                                            
+Italy                                                                           
+                                                                                
+       1100 93091 Calle della Testa                                             
+Venice                                                                          
+Italy                                                                           
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+                                                                                
+       1200 2017 Shinjuku-ku                                                    
+Tokyo                          Tokyo Prefecture                                 
+Japan                                                                           
+                                                                                
+       1300 9450 Kamiya-cho                                                     
+Hiroshima                                                                       
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+Japan                                                                           
+                                                                                
+       1400 2014 Jabberwocky Rd                                                 
+Southlake                      Texas                                            
+United States of America                                                        
+                                                                                
+       1500 2011 Interiors Blvd                                                 
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+South San Francisco            California                                       
+United States of America                                                        
+                                                                                
+       1600 2007 Zagora St                                                      
+South Brunswick                New Jersey                                       
+United States of America                                                        
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+       1700 2004 Charade Rd                                                     
+Seattle                        Washington                                       
+United States of America                                                        
+                                                                                
+       1800 147 Spadina Ave                                                     
+Toronto                        Ontario                                          
+Canada                                                                          
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+                                                                                
+       1900 6092 Boxwood St                                                     
+Whitehorse                     Yukon                                            
+Canada                                                                          
+                                                                                
+       2000 40-5-12 Laogianggen                                                 
+Beijing                                                                         
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+China                                                                           
+                                                                                
+       2100 1298 Vileparle (E)                                                  
+Bombay                         Maharashtra                                      
+India                                                                           
+                                                                                
+       2200 12-98 Victoria Street                                               
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+Sydney                         New South Wales                                  
+Australia                                                                       
+                                                                                
+       2300 198 Clementi North                                                  
+Singapore                                                                       
+Singapore                                                                       
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+       2400 8204 Arthur St                                                      
+London                                                                          
+United Kingdom                                                                  
+                                                                                
+       2500 Magdalen Centre, The Oxford Science Park                            
+Oxford                         Oxford                                           
+United Kingdom                                                                  
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+                                                                                
+       2600 9702 Chester Road                                                   
+Stretford                      Manchester                                       
+United Kingdom                                                                  
+                                                                                
+       2700 Schwanthalerstr. 7031                                               
+Munich                         Bavaria                                          
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+Germany                                                                         
+                                                                                
+       2800 Rua Frei Caneca 1360                                                
+Sao Paulo                      Sao Paulo                                        
+Brazil                                                                          
+                                                                                
+       2900 20 Rue des Corps-Saints                                             
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+Geneva                         Geneve                                           
+Switzerland                                                                     
+                                                                                
+       3000 Murtenstrasse 921                                                   
+Bern                           BE                                               
+Switzerland                                                                     
+                                                                                
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+       3100 Pieter Breughelstraat 837                                           
+Utrecht                        Utrecht                                          
+Netherlands                                                                     
+                                                                                
+       3200 Mariano Escobedo 9991                                               
+Mexico City                    Distrito Federal,                                
+Mexico                                                                          
+
+LOCATION_ID STREET_ADDRESS                                                      
+----------- ----------------------------------------                            
+CITY                           STATE_PROVINCE                                   
+------------------------------ -------------------------                        
+COUNTRY_NAME                                                                    
+----------------------------------------                                        
+                                                                                
+
+23 rows selected.
+
+SQL> select last_name, e.department_id, department_name
+  2  from employees e join departments d
+  3  on e.department_id = d.department_id;
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Whalen                               10 Administration                          
+Fay                                  20 Marketing                               
+Hartstein                            20 Marketing                               
+Tobias                               30 Purchasing                              
+Colmenares                           30 Purchasing                              
+Baida                                30 Purchasing                              
+Raphaely                             30 Purchasing                              
+Khoo                                 30 Purchasing                              
+Himuro                               30 Purchasing                              
+Mavris                               40 Human Resources                         
+Feeney                               50 Shipping                                
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Fleaur                               50 Shipping                                
+Fripp                                50 Shipping                                
+Gates                                50 Shipping                                
+Gee                                  50 Shipping                                
+Geoni                                50 Shipping                                
+Grant                                50 Shipping                                
+Jones                                50 Shipping                                
+Kaufling                             50 Shipping                                
+Ladwig                               50 Shipping                                
+Everett                              50 Shipping                                
+Dilly                                50 Shipping                                
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Dellinger                            50 Shipping                                
+Davies                               50 Shipping                                
+Chung                                50 Shipping                                
+Cabrio                               50 Shipping                                
+Bull                                 50 Shipping                                
+Bissot                               50 Shipping                                
+Bell                                 50 Shipping                                
+Atkinson                             50 Shipping                                
+Landry                               50 Shipping                                
+Weiss                                50 Shipping                                
+Walsh                                50 Shipping                                
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Vollman                              50 Shipping                                
+Vargas                               50 Shipping                                
+Taylor                               50 Shipping                                
+Mallin                               50 Shipping                                
+Markle                               50 Shipping                                
+Marlow                               50 Shipping                                
+Matos                                50 Shipping                                
+McCain                               50 Shipping                                
+Mikkilineni                          50 Shipping                                
+Mourgos                              50 Shipping                                
+Nayer                                50 Shipping                                
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+OConnell                             50 Shipping                                
+Olson                                50 Shipping                                
+Patel                                50 Shipping                                
+Perkins                              50 Shipping                                
+Philtanker                           50 Shipping                                
+Rajs                                 50 Shipping                                
+Rogers                               50 Shipping                                
+Sarchand                             50 Shipping                                
+Seo                                  50 Shipping                                
+Stiles                               50 Shipping                                
+Sullivan                             50 Shipping                                
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Austin                               60 IT                                      
+Pataballa                            60 IT                                      
+Ernst                                60 IT                                      
+Lorentz                              60 IT                                      
+Hunold                               60 IT                                      
+Baer                                 70 Public Relations                        
+Abel                                 80 Sales                                   
+Ande                                 80 Sales                                   
+Banda                                80 Sales                                   
+Bates                                80 Sales                                   
+Bernstein                            80 Sales                                   
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Bloom                                80 Sales                                   
+Cambrault                            80 Sales                                   
+Cambrault                            80 Sales                                   
+Doran                                80 Sales                                   
+Errazuriz                            80 Sales                                   
+Fox                                  80 Sales                                   
+Greene                               80 Sales                                   
+Hall                                 80 Sales                                   
+Hutton                               80 Sales                                   
+Johnson                              80 Sales                                   
+King                                 80 Sales                                   
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Kumar                                80 Sales                                   
+Lee                                  80 Sales                                   
+Livingston                           80 Sales                                   
+Marvins                              80 Sales                                   
+McEwen                               80 Sales                                   
+Olsen                                80 Sales                                   
+Ozer                                 80 Sales                                   
+Partners                             80 Sales                                   
+Russell                              80 Sales                                   
+Sewall                               80 Sales                                   
+Smith                                80 Sales                                   
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Smith                                80 Sales                                   
+Sully                                80 Sales                                   
+Taylor                               80 Sales                                   
+Tucker                               80 Sales                                   
+Tuvault                              80 Sales                                   
+Vishney                              80 Sales                                   
+Zlotkey                              80 Sales                                   
+Kochhar                              90 Executive                               
+King                                 90 Executive                               
+De Haan                              90 Executive                               
+Popp                                100 Finance                                 
+
+LAST_NAME                 DEPARTMENT_ID DEPARTMENT_NAME                         
+------------------------- ------------- ------------------------------          
+Urman                               100 Finance                                 
+Chen                                100 Finance                                 
+Faviet                              100 Finance                                 
+Sciarra                             100 Finance                                 
+Greenberg                           100 Finance                                 
+Gietz                               110 Accounting                              
+Higgins                             110 Accounting                              
+
+106 rows selected.
+
+SQL> select e.last_name "Employee", e.employee_id "EMP#",m.last_name as "Manager", e.manager_id
+  2  from employees e join employees m
+  3  on e.manager_id= m. employee_id;
+
+Employee                        EMP# Manager                   MANAGER_ID       
+------------------------- ---------- ------------------------- ----------       
+Kumar                            173 Cambrault                        148       
+Bates                            172 Cambrault                        148       
+Smith                            171 Cambrault                        148       
+Fox                              170 Cambrault                        148       
+Bloom                            169 Cambrault                        148       
+Ozer                             168 Cambrault                        148       
+Hunold                           103 De Haan                          102       
+Banda                            167 Errazuriz                        147       
+Ande                             166 Errazuriz                        147       
+Lee                              165 Errazuriz                        147       
+Marvins                          164 Errazuriz                        147       
+
+Employee                        EMP# Manager                   MANAGER_ID       
+------------------------- ---------- ------------------------- ----------       
+Greene                           163 Errazuriz                        147       
+Vishney                          162 Errazuriz                        147       
+Cabrio                           187 Fripp                            121       
+Dellinger                        186 Fripp                            121       
+Bull                             185 Fripp                            121       
+Sarchand                         184 Fripp                            121       
+Olson                            132 Fripp                            121       
+Marlow                           131 Fripp                            121       
+Atkinson                         130 Fripp                            121       
+Bissot                           129 Fripp                            121       
+Popp                             113 Greenberg                        108       
+
+Employee                        EMP# Manager                   MANAGER_ID       
+------------------------- ---------- ------------------------- ----------       
+Urman                            112 Greenberg                        108       
+Sciarra                          111 Greenberg                        108       
+Chen                             110 Greenberg                        108       
+Faviet                           109 Greenberg                        108       
+Fay                              202 Hartstein                        201       
+Gietz                            206 Higgins                          205       
+Lorentz                          107 Hunold                           103       
+Pataballa                        106 Hunold                           103       
+Austin                           105 Hunold                           103       
+Ernst                            104 Hunold                           103       
+Perkins                          191 Kaufling                         122       
+
+Employee                        EMP# Manager                   MANAGER_ID       
+------------------------- ---------- ------------------------- ----------       
+Gates                            190 Kaufling                         122       
+Dilly                            189 Kaufling                         122       
+Chung                            188 Kaufling                         122       
+Philtanker                       136 Kaufling                         122       
+Gee                              135 Kaufling                         122       
+Rogers                           134 Kaufling                         122       
+Mallin                           133 Kaufling                         122       
+Hartstein                        201 King                             100       
+Zlotkey                          149 King                             100       
+Cambrault                        148 King                             100       
+Errazuriz                        147 King                             100       
+
+Employee                        EMP# Manager                   MANAGER_ID       
+------------------------- ---------- ------------------------- ----------       
+Partners                         146 King                             100       
+Russell                          145 King                             100       
+Mourgos                          124 King                             100       
+Vollman                          123 King                             100       
+Kaufling                         122 King                             100       
+Fripp                            121 King                             100       
+Weiss                            120 King                             100       
+Raphaely                         114 King                             100       
+De Haan                          102 King                             100       
+Kochhar                          101 King                             100       
+Higgins                          205 Kochhar                          101       
+
+Employee                        EMP# Manager                   MANAGER_ID       
+------------------------- ---------- ------------------------- ----------       
+Baer                             204 Kochhar                          101       
+Mavris                           203 Kochhar                          101       
+Whalen                           200 Kochhar                          101       
+Greenberg                        108 Kochhar                          101       
+Grant                            199 Mourgos                          124       
+OConnell                         198 Mourgos                          124       
+Feeney                           197 Mourgos                          124       
+Walsh                            196 Mourgos                          124       
+Vargas                           144 Mourgos                          124       
+Matos                            143 Mourgos                          124       
+Davies                           142 Mourgos                          124       
+
+Employee                        EMP# Manager                   MANAGER_ID       
+------------------------- ---------- ------------------------- ----------       
+Rajs                             141 Mourgos                          124       
+Sewall                           161 Partners                         146       
+Doran                            160 Partners                         146       
+Smith                            159 Partners                         146       
+McEwen                           158 Partners                         146       
+Sully                            157 Partners                         146       
+King                             156 Partners                         146       
+Colmenares                       119 Raphaely                         114       
+Himuro                           118 Raphaely                         114       
+Tobias                           117 Raphaely                         114       
+Baida                            116 Raphaely                         114       
+
+Employee                        EMP# Manager                   MANAGER_ID       
+------------------------- ---------- ------------------------- ----------       
+Khoo                             115 Raphaely                         114       
+Tuvault                          155 Russell                          145       
+Cambrault                        154 Russell                          145       
+Olsen                            153 Russell                          145       
+Hall                             152 Russell                          145       
+Bernstein                        151 Russell                          145       
+Tucker                           150 Russell                          145       
+Jones                            195 Vollman                          123       
+McCain                           194 Vollman                          123       
+Everett                          193 Vollman                          123       
+Bell                             192 Vollman                          123       
+
+Employee                        EMP# Manager                   MANAGER_ID       
+------------------------- ---------- ------------------------- ----------       
+Patel                            140 Vollman                          123       
+Seo                              139 Vollman                          123       
+Stiles                           138 Vollman                          123       
+Ladwig                           137 Vollman                          123       
+Geoni                            183 Weiss                            120       
+Sullivan                         182 Weiss                            120       
+Fleaur                           181 Weiss                            120       
+Taylor                           180 Weiss                            120       
+Markle                           128 Weiss                            120       
+Landry                           127 Weiss                            120       
+Mikkilineni                      126 Weiss                            120       
+
+Employee                        EMP# Manager                   MANAGER_ID       
+------------------------- ---------- ------------------------- ----------       
+Nayer                            125 Weiss                            120       
+Johnson                          179 Zlotkey                          149       
+Grant                            178 Zlotkey                          149       
+Livingston                       177 Zlotkey                          149       
+Taylor                           176 Zlotkey                          149       
+Hutton                           175 Zlotkey                          149       
+Abel                             174 Zlotkey                          149       
+
+106 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select e.last_name "Employee", e.employee_id "EMP#",m.last_name as "Manager", e.manager_id "MGR#"
+  2  from employees e join employees m
+  3* on e.manager_id= m. employee_id
+SQL> /
+
+Employee                        EMP# Manager                         MGR#       
+------------------------- ---------- ------------------------- ----------       
+Kumar                            173 Cambrault                        148       
+Bates                            172 Cambrault                        148       
+Smith                            171 Cambrault                        148       
+Fox                              170 Cambrault                        148       
+Bloom                            169 Cambrault                        148       
+Ozer                             168 Cambrault                        148       
+Hunold                           103 De Haan                          102       
+Banda                            167 Errazuriz                        147       
+Ande                             166 Errazuriz                        147       
+Lee                              165 Errazuriz                        147       
+Marvins                          164 Errazuriz                        147       
+
+Employee                        EMP# Manager                         MGR#       
+------------------------- ---------- ------------------------- ----------       
+Greene                           163 Errazuriz                        147       
+Vishney                          162 Errazuriz                        147       
+Cabrio                           187 Fripp                            121       
+Dellinger                        186 Fripp                            121       
+Bull                             185 Fripp                            121       
+Sarchand                         184 Fripp                            121       
+Olson                            132 Fripp                            121       
+Marlow                           131 Fripp                            121       
+Atkinson                         130 Fripp                            121       
+Bissot                           129 Fripp                            121       
+Popp                             113 Greenberg                        108       
+
+Employee                        EMP# Manager                         MGR#       
+------------------------- ---------- ------------------------- ----------       
+Urman                            112 Greenberg                        108       
+Sciarra                          111 Greenberg                        108       
+Chen                             110 Greenberg                        108       
+Faviet                           109 Greenberg                        108       
+Fay                              202 Hartstein                        201       
+Gietz                            206 Higgins                          205       
+Lorentz                          107 Hunold                           103       
+Pataballa                        106 Hunold                           103       
+Austin                           105 Hunold                           103       
+Ernst                            104 Hunold                           103       
+Perkins                          191 Kaufling                         122       
+
+Employee                        EMP# Manager                         MGR#       
+------------------------- ---------- ------------------------- ----------       
+Gates                            190 Kaufling                         122       
+Dilly                            189 Kaufling                         122       
+Chung                            188 Kaufling                         122       
+Philtanker                       136 Kaufling                         122       
+Gee                              135 Kaufling                         122       
+Rogers                           134 Kaufling                         122       
+Mallin                           133 Kaufling                         122       
+Hartstein                        201 King                             100       
+Zlotkey                          149 King                             100       
+Cambrault                        148 King                             100       
+Errazuriz                        147 King                             100       
+
+Employee                        EMP# Manager                         MGR#       
+------------------------- ---------- ------------------------- ----------       
+Partners                         146 King                             100       
+Russell                          145 King                             100       
+Mourgos                          124 King                             100       
+Vollman                          123 King                             100       
+Kaufling                         122 King                             100       
+Fripp                            121 King                             100       
+Weiss                            120 King                             100       
+Raphaely                         114 King                             100       
+De Haan                          102 King                             100       
+Kochhar                          101 King                             100       
+Higgins                          205 Kochhar                          101       
+
+Employee                        EMP# Manager                         MGR#       
+------------------------- ---------- ------------------------- ----------       
+Baer                             204 Kochhar                          101       
+Mavris                           203 Kochhar                          101       
+Whalen                           200 Kochhar                          101       
+Greenberg                        108 Kochhar                          101       
+Grant                            199 Mourgos                          124       
+OConnell                         198 Mourgos                          124       
+Feeney                           197 Mourgos                          124       
+Walsh                            196 Mourgos                          124       
+Vargas                           144 Mourgos                          124       
+Matos                            143 Mourgos                          124       
+Davies                           142 Mourgos                          124       
+
+Employee                        EMP# Manager                         MGR#       
+------------------------- ---------- ------------------------- ----------       
+Rajs                             141 Mourgos                          124       
+Sewall                           161 Partners                         146       
+Doran                            160 Partners                         146       
+Smith                            159 Partners                         146       
+McEwen                           158 Partners                         146       
+Sully                            157 Partners                         146       
+King                             156 Partners                         146       
+Colmenares                       119 Raphaely                         114       
+Himuro                           118 Raphaely                         114       
+Tobias                           117 Raphaely                         114       
+Baida                            116 Raphaely                         114       
+
+Employee                        EMP# Manager                         MGR#       
+------------------------- ---------- ------------------------- ----------       
+Khoo                             115 Raphaely                         114       
+Tuvault                          155 Russell                          145       
+Cambrault                        154 Russell                          145       
+Olsen                            153 Russell                          145       
+Hall                             152 Russell                          145       
+Bernstein                        151 Russell                          145       
+Tucker                           150 Russell                          145       
+Jones                            195 Vollman                          123       
+McCain                           194 Vollman                          123       
+Everett                          193 Vollman                          123       
+Bell                             192 Vollman                          123       
+
+Employee                        EMP# Manager                         MGR#       
+------------------------- ---------- ------------------------- ----------       
+Patel                            140 Vollman                          123       
+Seo                              139 Vollman                          123       
+Stiles                           138 Vollman                          123       
+Ladwig                           137 Vollman                          123       
+Geoni                            183 Weiss                            120       
+Sullivan                         182 Weiss                            120       
+Fleaur                           181 Weiss                            120       
+Taylor                           180 Weiss                            120       
+Markle                           128 Weiss                            120       
+Landry                           127 Weiss                            120       
+Mikkilineni                      126 Weiss                            120       
+
+Employee                        EMP# Manager                         MGR#       
+------------------------- ---------- ------------------------- ----------       
+Nayer                            125 Weiss                            120       
+Johnson                          179 Zlotkey                          149       
+Grant                            178 Zlotkey                          149       
+Livingston                       177 Zlotkey                          149       
+Taylor                           176 Zlotkey                          149       
+Hutton                           175 Zlotkey                          149       
+Abel                             174 Zlotkey                          149       
+
+106 rows selected.
+
+SQL> SPOOL OFF
+
+//EXERCISE 6 SUBQUERIES
+
+SQL> SELECT EMPLOYEE_ID,LAST_NAME,SALARY
+  2  FROM EMPLOYEES
+  3  WHERE SALARY > (SELECT AVG(SALARY)
+  4  FROM EMPLOYEES)
+  5  ORDER BY SALARY;
+
+EMPLOYEE_ID LAST_NAME                     SALARY
+----------- ------------------------- ----------
+        203 Mavris                          6500
+        123 Vollman                         6500
+        165 Lee                             6800
+        113 Popp                            6900
+        155 Tuvault                         7000
+        161 Sewall                          7000
+        178 Grant                           7000
+        164 Marvins                         7200
+        172 Bates                           7300
+        171 Smith                           7400
+        154 Cambrault                       7500
+
+EMPLOYEE_ID LAST_NAME                     SALARY
+----------- ------------------------- ----------
+        160 Doran                           7500
+        111 Sciarra                         7700
+        112 Urman                           7800
+        122 Kaufling                        7900
+        120 Weiss                           8000
+        159 Smith                           8000
+        153 Olsen                           8000
+        121 Fripp                           8200
+        110 Chen                            8200
+        206 Gietz                           8300
+        177 Livingston                      8400
+
+EMPLOYEE_ID LAST_NAME                     SALARY
+----------- ------------------------- ----------
+        176 Taylor                          8600
+        175 Hutton                          8800
+        158 McEwen                          9000
+        152 Hall                            9000
+        109 Faviet                          9000
+        103 Hunold                          9000
+        157 Sully                           9500
+        151 Bernstein                       9500
+        163 Greene                          9500
+        170 Fox                             9600
+        156 King                           10000
+
+EMPLOYEE_ID LAST_NAME                     SALARY
+----------- ------------------------- ----------
+        150 Tucker                         10000
+        204 Baer                           10000
+        169 Bloom                          10000
+        149 Zlotkey                        10500
+        162 Vishney                        10500
+        174 Abel                           11000
+        148 Cambrault                      11000
+        114 Raphaely                       11000
+        168 Ozer                           11500
+        147 Errazuriz                      12000
+        108 Greenberg                      12008
+
+EMPLOYEE_ID LAST_NAME                     SALARY
+----------- ------------------------- ----------
+        205 Higgins                        12008
+        201 Hartstein                      13000
+        146 Partners                       13500
+        145 Russell                        14000
+        102 De Haan                        17000
+        101 Kochhar                        17000
+        100 King                           24000
+
+51 rows selected.
+
+SQL> SELECT AVG(SALARY)
+  2  FROM EMPLOYEES;
+
+AVG(SALARY)
+-----------
+ 6461.83178
+
+SQL> SELECT EMPLOYEE_ID,LAST_NAME,SALARY
+  2  FROM EMPLOYEES
+  3  WHERE LAST_NAME IN (SELECT LAST_NAME
+  4  FROM EMPLOYEES
+  5  WHERE LAST NAME LIKE '%u%');
+WHERE LAST NAME LIKE '%u%')
+           *
+ERROR at line 5:
+ORA-00920: invalid relational operator
+
+
+SQL> SELECT EMPLOYEE_ID,LAST_NAME,SALARY
+  2  FROM EMPLOYEES
+  3  WHERE LAST_NAME IN (SELECT LAST_NAME
+  4  FROM EMPLOYEES
+  5  WHERE LAST_NAME LIKE '%u%');
+
+EMPLOYEE_ID LAST_NAME                     SALARY
+----------- ------------------------- ----------
+        105 Austin                          4800
+        185 Bull                            4100
+        154 Cambrault                       7500
+        148 Cambrault                      11000
+        188 Chung                           3800
+        147 Errazuriz                      12000
+        181 Fleaur                          3100
+        118 Himuro                          2600
+        103 Hunold                          9000
+        175 Hutton                          8800
+        122 Kaufling                        7900
+
+EMPLOYEE_ID LAST_NAME                     SALARY
+----------- ------------------------- ----------
+        173 Kumar                           6100
+        124 Mourgos                         5800
+        145 Russell                        14000
+        182 Sullivan                        2500
+        157 Sully                           9500
+        150 Tucker                         10000
+        155 Tuvault                         7000
+
+18 rows selected.
+
+14 rows selected.
+
+SQL> SELECT LAST_NAME,SALARY
+  2  FROM EMPLOYEES
+  3  WHERE SALARY> (SELECT MAX(SALARY)
+  4  FROM EMPLOYEES
+  5  WHERE DEPARTMENT_ID=60);
+
+LAST_NAME                     SALARY
+------------------------- ----------
+King                           24000
+Kochhar                        17000
+De Haan                        17000
+Greenberg                      12008
+Raphaely                       11000
+Russell                        14000
+Partners                       13500
+Errazuriz                      12000
+Cambrault                      11000
+Zlotkey                        10500
+Tucker                         10000
+
+LAST_NAME                     SALARY
+------------------------- ----------
+Bernstein                       9500
+King                           10000
+Sully                           9500
+Vishney                        10500
+Greene                          9500
+Ozer                           11500
+Bloom                          10000
+Fox                             9600
+Abel                           11000
+Hartstein                      13000
+Baer                           10000
+
+LAST_NAME                     SALARY
+------------------------- ----------
+Higgins                        12008
+
+23 rows selected.
+

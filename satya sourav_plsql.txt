@@ -1,0 +1,318 @@
+SQL> 
+
+  1  begin
+  2  if to_char(sysdate,'Day') = 'Tuesday' then
+  3  dbms_output.put_line('condition is true');
+  4  else
+  5  dbms_output.put_line('condition is false');
+  6  end if;
+  7* end;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  procedure do_nothing is
+  3  begin
+  4  dbms_output.put_line('I am in procedure');
+  5  end;
+  6  begin
+  7  do_nothing;
+  8  
+  9  begin
+ 10  dbms_output.put_line('i am in first nested block');
+ 11  end;
+ 12  
+ 13  begin
+ 14  dbms_output.put_line('i am in second nested block');
+ 15  end;
+ 16  end;
+ 17  /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2      name_1 char(30) := 'Radha                       ';
+  3      name_2 char(10) := 'Radha';
+  4   begin
+  5      if name_1 = name_2 then
+  6              dbms_output.put_line('The strings are equal.');
+  7      else
+  8              dbms_output.put_line('The strings are not equal');
+  9      end if;
+ 10   end;
+ 11  /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2      name_1 varchar2(30) := 'Radha                       ';
+  3      name_2 varchar2(30) := 'Radha';
+  4   begin
+  5      if name_1 = name_2 then
+  6              dbms_output.put_line('The strings are equal.');
+  7      else
+  8              dbms_output.put_line('The strings are not equal');
+  9      end if;
+ 10   end;
+ 11  /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  cursor cursor_empname (dept_no number)
+  3  is
+  4  select ename from emp where deptno=dept_no order by ename;
+  5  
+  6  emp_name emp.ename%TYPE;
+  7  begin
+  8  -- open the cursor
+  9  open cursor_empname(20);
+ 10  
+ 11  -- fetch and display data for each animal
+ 12  loop
+ 13  fetch cursor_empname into emp_name;
+ 14  exit when cursor_empname%NOTFOUND;
+ 15  
+ 16  dbms_output.put_line(emp_name);
+ 17  end loop;
+ 18  end;
+ 19  /
+
+
+
+SQL> declare
+  2  a varchar2(10);
+  3  cursor c1(dnum number) is select ename from emp where deptno=dnum;
+  4  begin
+  5  open c1(&dno);
+  6  
+  7  loop
+  8  fetch c1 into a;
+  9  exti when c1%NOTFOUND;
+ 10  dbms_output.put_line(a);
+ 11  end loop;
+ 12  
+ 13  close c1;
+ 14  end;
+ 15  /
+Enter value for dno: 22
+old   5: open c1(&dno);
+new   5: open c1(22);
+exti when c1%NOTFOUND;
+     *
+ERROR at line 9:
+ORA-06550: line 9, column 6: 
+PLS-00103: Encountered the symbol "WHEN" when expecting one of the following: 
+:= . ( @ % ; 
+
+
+SQL> spool off
+SQL> declare
+  2  eno number(4) := &employee_no;
+  3  a emp%rowtype;
+  4  cursor c1 is select * from emp where empno=eno;
+  5  begin
+  6  open c1;
+  7  
+  8  loop
+  9  fetch c1 into a;
+ 10  exit when c1%NOTFOUND;
+ 11  
+ 12  dbms_output.put_line(a.empno||' '||a.ename||' '||a.job);
+ 13  end loop;
+ 14  end;
+ 15  /
+Enter value for employee_no: 7576
+
+SQL> spool off
+
+
+SQL> declare
+  2  x number;
+  3  begin
+  4  x := 1;
+  5  if x=1 then
+  6  dbms_output.put_line('x = 1');
+  7  elsif x=2 then
+  8  dbms_output.put_line('x = 2');
+  9  elsif x=3 then
+ 10  dbms_output.put_line('x = 3');
+ 11  elsif x>2 then
+ 12  dbms_output.put_line('x > 2');
+ 13  end if;
+ 14  end;
+ 15  /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  x number;
+  3  begin
+  4  x := 3;
+  5  if x=4 then
+  6  dbms_output.put_line('x = 4');
+  7  elsif x > 4 then
+  8  dbms_output.put_line('x > 4');
+  9  else
+ 10  dbms_output.put_line('x <> 4 and x < 2');
+ 11  end if;
+ 12  end;
+ 13  /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  x number;
+  3  begin
+  4  if x=2 then
+  5  dbms_output.put_line('x=2');
+  6  elsif x<>2 then
+  7  dbms_output.put_line('x<>2');
+  8  else
+  9  dbms_output.put_line('x is NULL');
+ 10  end if;
+ 11  end;
+ 12  /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  b boolean;
+  3  x number;
+  4  begin
+  5  b := (x=2);
+  6  
+  7  if b=true then
+  8  dbms_output.put_line('expression is true');
+  9  elsif b=false then
+ 10  dbms_output.put_line('expression is false');
+ 11  else
+ 12  dbms_output.put_line('null value');
+ 13  end if;
+ 14  end;
+ 15  /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  x number;
+  3  begin
+  4  x := 0;
+  5  
+  6  while x <= 3 loop
+  7  x := x+1;
+  8  dbms_output.put_line(x);
+  9  end loop;
+ 10  end;
+ 11  /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  x number;
+  3  begin
+  4  for x in 1..10 loop
+  5  dbms_output.put_line(x);
+  6  end loop;
+  7  end;
+  8  /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  x number;
+  3  begin
+  4  x := 0;
+  5  loop
+  6  x := x+1;
+  7  dbms_output.put_line(x);
+  8  
+  9  if x=3 then
+ 10  exit;
+ 11  end if;
+ 12  end loop;
+ 13  end;
+ 14  /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  x number;
+  3  begin
+  4  x := 0;
+  5  loop
+  6  x := x+1;
+  7  dbms_output.put_line(x);
+  8  
+  9  exit when x=3;
+ 10  end loop;
+ 11  end;
+ 12  /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  x number;
+  3  begin
+  4  x := 2;
+  5  if x=2 then
+  6  dbms_output.put_line(x);
+  7  else
+  8  NULL;
+  9  end if;
+ 10  end;
+ 11  /
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  x number;
+  3  begin
+  4  x := 0;
+  5  
+  6  <<repeat_loop>>
+  7  
+  8  x := x+1;
+  9  dbms_output.put_line(x);
+ 10  
+ 11  if x < 3 then
+ 12  goto repeat_loop;
+ 13  end if;
+ 14  end;
+ 15  /
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off
+SQL> create or replace procedure news_sel as
+  2  x varchar2(10);
+  3  begin
+  4  select ename into x from emp where empno=7900;
+  5  dbms_output.put_line(x);
+  6  end;
+  7  
+  8  
+  9  // executing it
+ 10  
+ 11  execute news_sel;
+ 12  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> create procedure new_worker (person_name IN varchar2)
+  2  as
+  3  begin
+  4  insert into worker(name,age,lodging) values(person_name,null,null);
+  5  dbms_output.put_line('Inserted');
+  6  end;
+  7  
+  8  // executing the procedure
+  9  
+ 10  execute procedure new_worker('Jones');
+ 11  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> spool off
+SQL> spool off
